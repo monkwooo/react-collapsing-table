@@ -3935,18 +3935,14 @@ var Pagination = function Pagination(_ref) {
     var nextPageIcon = currentPage < totalPages ? (0, _Icon.getIcon)({ name: 'rightChevron', onClick: nextPage }) : null;
 
     return _react2.default.createElement(
-        'div',
+        'span',
         { className: 'react-collapsible-page' },
-        _react2.default.createElement(
-            'p',
-            null,
-            previousPageIcon,
-            'Page ',
-            currentPage,
-            ' of ',
-            totalPages,
-            nextPageIcon
-        )
+        previousPageIcon,
+        'Page ',
+        currentPage,
+        ' of ',
+        totalPages,
+        nextPageIcon
     );
 };
 //Components
@@ -6798,7 +6794,7 @@ exports = module.exports = __webpack_require__(155)(false);
 
 
 // module
-exports.push([module.i, "html {\n  font-size: 62.5%;\n  font-family: Helvetica, Arial, \"sans-serif\";\n}\n/*Styles for the body of the table */\ntable.react-collapsible {\n  border-collapse: collapse;\n  width: 100%;\n}\n.react-collapse-header {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  flex-wrap: wrap;\n}\n.react-collapsible thead, .react-collapsible .child-label {\n  font-size: 1rem;\n  text-transform: uppercase;\n  letter-spacing: 0.1rem;\n  color: #555;\n  text-align: left;\n  font-weight: 600;\n}\n.react-collapsible thead th, .react-collapsible td {\n  min-width: 10rem;\n  padding-bottom: .8rem;\n}\n.react-collapsible tr {\n  border-bottom: 0.1rem #e0e4ea solid;\n}\n.react-collapsible td {\n  padding: .8rem .8rem .8rem 0;\n  font-size: 1.4rem;\n  font-weight: 200;\n}\n/*child row in table */\n.react-collapsible .child-cell {\n  display: flex;\n}\n.react-collapsible .child-label {\n  margin-left: 1.6rem;\n  flex-basis: 25%;\n}\n.react-collapsible .child-content {\n  flex-basis: 75%;\n}\n@media screen and (min-width: 768px) {\n  .react-collapsible .child-label {\n    margin-left: 1.6rem;\n    flex-basis: 10%;\n  }\n  .react-collapsible .child-content {\n    flex-basis: 90%;\n  }\n}\n/*Styles for search */\n.react-collapsible-search {\n  margin: 3.2rem 0;\n}\n.react-collapsible-search .clear {\n  color: #dbb886;\n  border: 0;\n  background-color: #fff;\n  font-size: 1.4rem;\n  margin-left: .8rem;\n}\n.react-collapsible-search input {\n  border: 0;\n  border-bottom: 1px #dbb886 solid;\n  min-width: 300px;\n  height: 60px;\n  font-size: 2rem;\n  font-weight: 300;\n}\n.react-collapsible-search input::placeholder {\n  color: #858DA3;\n}\n.brand-primary-light {\n  color: #dbb886;\n}\n.search-highlight {\n  background-color: #C1C9D5;\n}\n\n/*Styles for pagination */\n.react-collapsible-page {\n  font-size: 1.4rem;\n  font-weight: 200;\n}\n.react-collapsible-page .arrow-left {\n  margin-right: .8rem;\n}\n.react-collapsible-page .arrow-right {\n  margin-left: .8rem;\n}\n\n.highlight {\n  background-color: #FFFF00\n}\n", ""]);
+exports.push([module.i, "html {\n  font-size: 62.5%;\n  font-family: Helvetica, Arial, \"sans-serif\";\n}\n/*Styles for the body of the table */\ntable.react-collapsible {\n  border-collapse: collapse;\n  width: 100%;\n  margin-bottom: 10px;\n}\n.react-collapse-header {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  flex-wrap: wrap;\n}\n.react-collapsible thead, .react-collapsible .child-label {\n  font-size: 1rem;\n  text-transform: uppercase;\n  letter-spacing: 0.1rem;\n  color: #555;\n  text-align: left;\n  font-weight: 600;\n}\n.react-collapsible thead th, .react-collapsible td {\n  min-width: 10rem;\n  padding-bottom: .8rem;\n  text-align: center;\n}\n.react-collapsible tr {\n  border-bottom: 0.1rem #e0e4ea solid;\n}\n.react-collapsible td {\n  padding: .8rem .8rem .8rem 0;\n  font-size: 1.4rem;\n  font-weight: 200;\n  text-align: center;\n}\n/*child row in table */\n.react-collapsible .child-cell {\n  display: flex;\n}\n.react-collapsible .child-label {\n  margin-left: 1.6rem;\n  flex-basis: 25%;\n}\n.react-collapsible .child-content {\n  flex-basis: 75%;\n}\n@media screen and (min-width: 768px) {\n  .react-collapsible .child-label {\n    margin-left: 1.6rem;\n    flex-basis: 20%;\n    text-align: left;\n  }\n  .react-collapsible .child-content {\n    text-align: center;\n    flex-basis: 80%;\n  }\n}\n/*Styles for search */\n.react-collapsible-search {\n}\n.react-collapsible-search .clear {\n  color: #dbb886;\n  border: 0;\n  background-color: #fff;\n  font-size: 1.4rem;\n}\n.react-collapsible-search input {\n  border: 0;\n  border-bottom: 1px #dbb886 solid;\n  width: 180px;\n  height: 60px;\n  font-size: 2rem;\n  font-weight: 300;\n  line-height: 60px;\n  text-align: center;\n}\n.react-collapsible-search input::placeholder {\n  color: #858DA3;\n}\n.brand-primary-light {\n  color: #dbb886;\n}\n.search-highlight {\n  background-color: #C1C9D5;\n}\n\n/*Styles for pagination */\n.react-collapsible-page {\n  font-size: 1.4rem;\n  font-weight: 200;\n  line-height: 60px;\n}\n.react-collapsible-page .arrow-left {\n  margin-right: .8rem;\n}\n.react-collapsible-page .arrow-right {\n  margin-left: .8rem;\n}\n\n.highlight {\n  background-color: #FFFF00\n}\n", ""]);
 
 // exports
 
