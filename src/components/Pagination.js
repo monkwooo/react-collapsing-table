@@ -13,13 +13,11 @@ const Pagination = ({ currentPage, totalRows, rowSize, nextPage, previousPage })
         getIcon({ name: 'rightChevron', onClick: nextPage }) : null;
 
     return (
-        <div className="react-collapsible-page">
-            <p>
-                { previousPageIcon }
-                Page { currentPage } of { totalPages }
-                { nextPageIcon }
-            </p>
-        </div>
+      <span className="react-collapsible-page">
+          { previousPageIcon }
+          Page { currentPage } of { totalPages }
+          { nextPageIcon }
+      </span>
     );
 };
 
