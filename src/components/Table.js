@@ -9,7 +9,8 @@ import Pagination from './Pagination';
 import { calculateRows, sortColumn, nextPage, previousPage, expandRow } from '../actions/TableActions'
 import { resizeTable } from '../actions/ResizeTableActions'
 import { searchRows, clearSearch } from '../actions/SearchActions';
-const _ = require('lodash');
+import cloneDeep from 'lodash/cloneDeep';
+import isEqual from 'lodash/isEqual';
 
 export class Table extends Component {
     constructor(props) {
@@ -27,9 +28,9 @@ export class Table extends Component {
       } = props;
 
       this.state = {
-        columns: columns.map(column => { return { ...column, isVisible: true } }),
-        initialRows: _.cloneDeep(rows),
-        rows: _.cloneDeep(rows),
+        columns: columns.map(column => ({ ...column, isVisible: true })),
+        initialRows: cloneDeep(rows),
+        rows: cloneDeep(rows),
         searchString: '',
         pagination: {
           rowSize,
@@ -57,6 +58,19 @@ export class Table extends Component {
 
     componentDidMount(){
         this.resizeTable();
+    }
+
+    componentDidUpdate(prevProps){
+      if(
+        !isEqual(prevProps.rows, this.props.rows) ||
+        !isEqual(prevProps.columns, this.props.columns)
+      ){
+        this.setState({
+          columns: this.props.columns.map(c => ({ ...c, isVisible: true })),
+          initialRows: cloneDeep(this.props.rows),
+          rows: cloneDeep(this.props.rows)
+        }, this.resizeTable);
+      }
     }
 
     componentWillUnmount() {
@@ -96,12 +110,19 @@ export class Table extends Component {
       const displayedRows = calculateRows({ state: this.state })
       const visibleColumns = Object.assign([], columns.filter(column => column.isVisible));
       const hiddenColumns = Object.assign([], columns.filter(column => !column.isVisible));
-      
+
       return (
           <div>
-              <Search searchString={ this.state.searchString }
-                      searchRows={ this.searchRows }
-                      clearSearch={ this.clearSearch } />
+              <div className="react-collapse-header">
+                <Pagination currentPage={ currentPage }
+                            totalRows={ rows.length }
+                            rowSize={ rowSize }
+                            nextPage={ this.nextPage }
+                            previousPage={ this.previousPage } />
+                <Search searchString={ this.state.searchString }
+                        searchRows={ this.searchRows }
+                        clearSearch={ this.clearSearch } />
+              </div>
               <table className="react-collapsible">
                   <Columns columns={ visibleColumns }
                            sortRows={ this.sortRows }
@@ -111,11 +132,6 @@ export class Table extends Component {
                         hiddenColumns={ hiddenColumns }
                         expandRow={ this.expandRow } />
               </table>
-              <Pagination currentPage={ currentPage }
-                          totalRows={ rows.length }
-                          rowSize={ rowSize }
-                          nextPage={ this.nextPage }
-                          previousPage={ this.previousPage } />
           </div>
       );
     }

@@ -7,6 +7,12 @@ table.react-collapsible {
   border-collapse: collapse;
   width: 100%;
 }
+.react-collapse-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
 .react-collapsible thead, .react-collapsible .child-label {
   font-size: 1rem;
   text-transform: uppercase;
@@ -52,7 +58,7 @@ table.react-collapsible {
   margin: 3.2rem 0;
 }
 .react-collapsible-search .clear {
-  color: #009cde;
+  color: #dbb886;
   border: 0;
   background-color: #fff;
   font-size: 1.4rem;
@@ -60,17 +66,17 @@ table.react-collapsible {
 }
 .react-collapsible-search input {
   border: 0;
-  border-bottom: 1px #009cde solid;
-  width: 20rem;
-  height: 2rem;
-  font-size: 1.4rem;
-  font-weight: 200;
+  border-bottom: 1px #dbb886 solid;
+  min-width: 300px;
+  height: 60px;
+  font-size: 2rem;
+  font-weight: 300;
 }
 .react-collapsible-search input::placeholder {
   color: #858DA3;
 }
 .brand-primary-light {
-  color: #009cde;
+  color: #dbb886;
 }
 .search-highlight {
   background-color: #C1C9D5;

@@ -37,18 +37,18 @@ export const getColumns = () => {
 
 export const basicTableProps = {
     columns: getColumns(),
-    rows: generateFakeData({ totalRows: 1000 }),
+    rows: generateFakeData({ totalRows: 1 }),
 }
 
 export const defaultColumnSetProps = {
     columns: getColumns(),
-    rows: generateFakeData({ totalRows: 1000 }),
+    rows: generateFakeData({ totalRows: 1 }),
     defaultSortColumn: 'email',
 }
 
 export const sortColumnAndDirectionProps = {
     columns: getColumns(),
-    rows: generateFakeData({ totalRows: 1000 }),
+    rows: generateFakeData({ totalRows: 1 }),
     column: 'firstName',
     direction: 'ascending',
 }

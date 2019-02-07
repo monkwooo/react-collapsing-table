@@ -1,4 +1,4 @@
-const _ = require('lodash');
+import cloneDeep from 'lodash/cloneDeep';
 
 export const length = (x) => x.length
 export const sum = (a, b) => a+b
@@ -21,7 +21,7 @@ export const insert = (str, index, value) => {
 }
 
 export const searchRows = ({ searchString, state }) => {
-  let rows = _.cloneDeep(state.initialRows);
+  let rows = cloneDeep(state.initialRows);
   const { columns } = state;
   const upperCaseSearchString = searchString.toUpperCase();
 
@@ -69,7 +69,7 @@ export const clearSearch = ({ state }) => {
     return {
       ...state,
       searchString: '',
-      rows: _.cloneDeep(state.initialRows),
+      rows: cloneDeep(state.initialRows),
       pagination: { ...state.pagination, currentPage: 1, }
     };
 };
