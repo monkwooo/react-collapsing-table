@@ -78,19 +78,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/massmutual/react-collapsing-table.git"
+    "url": "git+https://github.com/monkwooo/react-collapsing-table.git"
   },
   "keywords": [
     "reactjs"
   ],
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/massmutual/react-collapsing-table/issues"
+    "url": "https://github.com/monkwooo/react-collapsing-table/issues"
   },
-  "homepage": "https://github.com/massmutual/react-collapsing-table#readme",
+  "homepage": "https://github.com/monkwooo/react-collapsing-table#readme",
   "storybook-deployer": {
-    "gitUsername": "salinn",
-    "gitEmail": "pmd6624@rit.edu",
-    "commitMessage": "Deploy Storybook [skip ci]"
+    "gitUsername": "monkwooo",
+    "gitEmail": "mayankvijaypathak@gmail.com"
   }
 }
