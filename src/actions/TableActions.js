@@ -1,4 +1,5 @@
 import cloneDeep from 'lodash/cloneDeep';
+import get from 'lodash/get';
 
 //What rows should be displayed?
 export const calculateRows = ({ state }) => {
@@ -16,6 +17,11 @@ export const calculateRows = ({ state }) => {
 
     return selectedRows
 };
+
+//Cell Data Parser
+export const parseField = (accessor, row, fieldParser) => {
+  return fieldParser?fieldParser(accessor, row):get(row, accessor)
+}
 
 //Sorting Rows
 export const sortColumn = ({ column, state }) => {

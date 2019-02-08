@@ -1,20 +1,21 @@
 //React
 import React from 'react';
 import { ExpandedRowPropType } from '../utils/propTypes';
+import { parseField } from '../actions/TableActions';
 //Components
 
-const ExpandedRow = ({ row, columns, colspan }) => {
+const ExpandedRow = ({ row, columns, colspan, fieldParser }) => {
     const listOfHiddenAttributes = columns.map(({ accessor, label }) => {
         return <p className="child-cell" key={ accessor }>
                   <span className="child-label">{ label }</span>
-                  <span className="child-content" dangerouslySetInnerHTML={{ __html: row[accessor] }} />
+                  <span className="child-content" dangerouslySetInnerHTML={{ __html: parseField(accessor, row, fieldParser) }} />
                </p>
     });
 
     return (
-        <td colSpan={ colspan }>
-            { listOfHiddenAttributes }
-        </td>
+      <div className="child-expanded">
+        { listOfHiddenAttributes }
+      </div>
     );
 };
 

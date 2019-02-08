@@ -27,9 +27,9 @@ export const CellPropType = {
     row: object.isRequired,
     accessor: string.isRequired,
     cellIndex: number.isRequired,
-    rowIndex: number.isRequired,
     expandRow: func.isRequired,
     hiddenColumnsLength: number.isRequired,
+    fieldParser: func
 };
 
 export const ColumnPropType = {
@@ -48,7 +48,7 @@ export const ColumnsPropType = {
 export const ExpandedRowPropType = {
     row: object.isRequired,
     columns: Columns.isRequired,
-    colspan: number.isRequired,
+    fieldParser: func
 };
 
 export const PaginationPropType = {
@@ -65,6 +65,7 @@ export const RowPropType = {
     hiddenColumns: Columns.isRequired,
     expandRow: func.isRequired,
     rowIndex: number.isRequired,
+    fieldParser: func
 };
 
 export const RowsPropType = {
@@ -88,4 +89,5 @@ export const TablePropType = {
     defaultSortColumn: string,
     column: string,
     direction: string,
+    fieldParser: func
 };

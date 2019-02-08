@@ -8,7 +8,7 @@ import CaretDown from 'react-icons/lib/fa/caret-down';
 import ChevronLeft from 'react-icons/lib/fa/chevron-left';
 import ChevronRight from 'react-icons/lib/fa/chevron-right';
 
-export const getIcon = ({ onClick, name='', size=16 }) => {
+export const getIcon = ({ onClick, name='', size=24 }) => {
     switch (name) {
         case 'OpenRow':
             return <span><OpenRow onClick={ onClick } size={ size } className="brand-primary-light" /></span>;
@@ -27,17 +27,17 @@ export const getIcon = ({ onClick, name='', size=16 }) => {
     }
 };
 
-export const expandIcon = ({ cellIndex, rowIndex, row, hiddenColumnsLength, expandRow }) => {
+export const expandIcon = ({ cellIndex, row, hiddenColumnsLength }) => {
     const name = row.isOpen ? 'CloseRow' : 'OpenRow';
     const IS_FIRST_CELL = cellIndex === 0;
     const IS_HIDDEN_COULMNS = hiddenColumnsLength > 0;
     const IS_NOT_EMPTY_ROW = Object.keys(row).length > 1;
 
     if(IS_FIRST_CELL && IS_HIDDEN_COULMNS && IS_NOT_EMPTY_ROW){
-        return getIcon({ name, onClick: () => expandRow({ rowIndex }) });
+        return getIcon({ name });
     }
 
-    return getIcon({ onClick: {}, name: 'none' });
+    return getIcon({ name: 'none' });
 };
 
 export const sortDirection = ({ direction='none', size=20 }) => {

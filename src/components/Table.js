@@ -6,11 +6,12 @@ import Search from './Search';
 import Columns from './Columns';
 import Rows from './Rows';
 import Pagination from './Pagination';
-import { calculateRows, sortColumn, nextPage, previousPage, expandRow } from '../actions/TableActions'
+import { calculateRows, sortColumn, nextPage, previousPage, expandRow, dynamicSort } from '../actions/TableActions'
 import { resizeTable } from '../actions/ResizeTableActions'
 import { searchRows, clearSearch } from '../actions/SearchActions';
 import cloneDeep from 'lodash/cloneDeep';
 import isEqual from 'lodash/isEqual';
+import last from 'lodash/last';
 
 export class Table extends Component {
     constructor(props) {
@@ -65,8 +66,15 @@ export class Table extends Component {
         !isEqual(prevProps.rows, this.props.rows) ||
         !isEqual(prevProps.columns, this.props.columns)
       ){
+        var _maxPrior = last(
+          this.state.columns.filter(c => c.isVisible).sort(
+            dynamicSort({ column: 'priorityLevel' })
+          )
+        ).priorityLevel;
         this.setState({
-          columns: this.props.columns.map(c => ({ ...c, isVisible: true })),
+          columns: this.props.columns.map(
+            c => ({ ...c, isVisible: Boolean(c.priorityLevel < _maxPrior) })
+          ),
           initialRows: cloneDeep(this.props.rows),
           rows: cloneDeep(this.props.rows)
         }, this.resizeTable);
@@ -130,6 +138,7 @@ export class Table extends Component {
                   <Rows rows={ displayedRows }
                         visibleColumns={ visibleColumns }
                         hiddenColumns={ hiddenColumns }
+                        fieldParser={ this.props.fieldParser }
                         expandRow={ this.expandRow } />
               </table>
           </div>

@@ -5,29 +5,41 @@ import { RowPropType } from '../utils/propTypes';
 import Cell from './Cell';
 import ExpandedRow from './ExpandedRow';
 
-const Row = ({ row, visibleColumns, hiddenColumns, expandRow, rowIndex }) => {
+const Row = ({ row, visibleColumns, hiddenColumns, expandRow, rowIndex, fieldParser }) => {
     const hiddenColumnsLength = hiddenColumns.length;
 
     const cells = visibleColumns.map(({ accessor }, index) => {
         return <Cell key={ accessor }
                      row={ row }
-                     rowIndex={ rowIndex }
                      cellIndex={ index }
                      accessor={ accessor }
                      expandRow={ expandRow }
+                     fieldParser={fieldParser}
                      hiddenColumnsLength={ hiddenColumnsLength } />
     });
 
+    var onClick = null;
+    if(
+      // IS_HIDDEN_COULMNS
+      (hiddenColumnsLength > 0) &&
+      // IS_NOT_EMPTY_ROW
+      Object.keys(row).length > 1
+    ){
+      onClick = () => expandRow({ rowIndex });
+    }
+
     const expandedRow = row.isOpen ?
         <tr className="expanded-row" key='expandedRow'>
+          <td colSpan={ visibleColumns.length }>
             <ExpandedRow row={ row }
-                         columns={ hiddenColumns }
-                         colspan={ visibleColumns.length } />
+                         fieldParser={fieldParser}
+                         columns={ hiddenColumns }/>
+          </td>
         </tr> : null;
 
     return (
         [
-            <tr key='normalRow'>
+            <tr key='normalRow' onClick={ onClick }>
                 { cells }
             </tr>,
             expandedRow
